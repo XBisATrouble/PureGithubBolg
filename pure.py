@@ -65,7 +65,6 @@ def all_post_file():
             dt = time.strftime("%Y-%m-%d",time_local)
             print(dt)
             postlist.append((post_path, c_time))
-            print(postlist)
     return sorted(postlist, key=lambda x:x[1], reverse=True)
 
 def cover_all_post():
@@ -80,6 +79,7 @@ def cover_all_post():
         postlist.append(p)
     index_t = jinja_env.get_template("index.html")
     with open(join(website_dir, "index.html"), "w") as fd:
+        print(postlist)
         fd.write(index_t.render(postlist=postlist))
 
 
