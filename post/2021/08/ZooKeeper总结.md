@@ -1,6 +1,4 @@
 # ZooKeeper总结
-[toc]
-
 实习中需要参与开发服务中心，服务中心模块中依赖zookeeper，进行服务注册、管理和监听
 服务中心实现过程中通过zookeeper来存储，zookeeper的结构如下：
 ``` 
@@ -20,6 +18,7 @@ ZooKeeper 是一个分布式的，开放源码的分布式应用程序协同服�
 * ZooKeeper树中的每个znode都由一个路径标识，路径元素由『/』分隔。
 * Zookeeper是树状结构，树是由节点所组成，Zookeeper的数据存储也同样是基于节点，这种节点叫做Znode
 * 这些节点被称为数据寄存器，因为它们可以存储数据。 因此，一个znode可以有子节点以及与之相关的数据。 这与文件系统可以把文件作为路径很类似。
+
 ![avatar](static/../../../../static/images/2021/zknamespace.jpg)
 
 ## ZooKeeper集群
@@ -29,6 +28,7 @@ ZooKeeper 是一个分布式的，开放源码的分布式应用程序协同服�
 客户端在使用 ZooKeeper 时，需要知道集群机器列表，通过与集群中的某一台机器建立 TCP 连接来使用服务。
 
 客户端使用这个 TCP 链接来发送请求、获取结果、获取监听事件以及发送心跳包。如果这个连接异常断开了，客户端可以连接到另外的机器上。
+
 ![avatar](../../../static/images/2021/zkservice.jpg)
 
 可以看到，在Arm环境的规划中，是有三套zk环境的，一套集群有三台机器，这符合文档里说的：
@@ -40,6 +40,7 @@ ZooKeeper 是一个分布式的，开放源码的分布式应用程序协同服�
 在这种模式中，通常 Master 服务器作为主服务器提供写服务，其他的 Slave 服务器从服务器通过异步复制的方式获取 Master 服务器最新的数据提供读服务。
 
 但是，在 ZooKeeper 中没有选择传统的 Master/Slave 概念，而是引入了Leader、Follower 和 Observer 三种角色。
+
 ![avatar](../../../static/images/2021/zkServer.jpg)
 
 ZooKeeper 集群中的所有机器通过一个 Leader 选举过程来选定一台称为 “Leader” 的机器。
@@ -47,13 +48,11 @@ ZooKeeper 集群中的所有机器通过一个 Leader 选举过程来选定一�
 Leader 既可以为客户端提供写服务又能提供读服务。除了 Leader 外，Follower 和 Observer 都只能提供读服务。Leader是整个 Zookeeper 集群工作机制中的核心，作为整个 ZooKeeper 集群的主节点，负责响应所有对 ZooKeeper 状态变更的请求。
 
 ### Leader算法
-> 1. 每个 server 发出一个投票
-投票的最基本元素是（SID-服务器id,ZXID-事物id）
-> 2. 接受来自各个服务器的投票
-> 3. 处理投票
-优先检查 ZXID(数据越新ZXID越大),ZXID比较大的作为leader，ZXID一样的情况下比较SID
-> 4. 统计投票
-这里有个过半的概念，大于集群机器数量的一半，即大于或等于（n/2+1）,我们这里的由三台，大于等于2即为达到“过半”的要求。
+1. 每个 server 发出一个投票，投票的最基本元素是（SID-服务器id,ZXID-事物id）
+2. 接受来自各个服务器的投票
+3. 处理投票，优先检查 ZXID(数据越新ZXID越大),ZXID比较大的作为leader，ZXID一样的情况下比较SID
+4. 统计投票，这里有个过半的概念，大于集群机器数量的一半，即大于或等于（n/2+1）,我们这里的由三台，大于等于2即为达到“过半”的要求。
+
 这里也有引申到为什么 Zookeeper 集群推荐是单数。
 
 ![avatar](../../../static/images/2021/elet.jpg)
