@@ -79,7 +79,7 @@ def cover_all_post():
         postlist.append(p)
     index_t = jinja_env.get_template("index.html")
     with open(join(website_dir, "index.html"), "w") as fd:
-        print(postlist)
+        print(postlist[0])
         fd.write(index_t.render(postlist=postlist))
 
 
