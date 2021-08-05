@@ -62,7 +62,7 @@ def all_post_file():
             c_time = os.stat(post_path).st_ctime
             time_local = time.localtime(c_time)
             #转换成新的时间格式(2016-05-05 20:28:54)
-            dt = time.strftime("%Y-%m-%d %H:%M:%S",time_local)
+            dt = time.strftime("%Y-%m-%d",time_local)
             print(dt)
             postlist.append((post_path, c_time))
     return sorted(postlist, key=lambda x:x[1], reverse=True)
