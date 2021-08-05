@@ -27,18 +27,11 @@
             </button>
             <a class="navbar-brand" href="#">{{ title }}</a>
         </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">Resume</a></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="#">Blog</a></li>
+                <li class="active"><a href="#">Resume</a></li>
                 {% for social in sociallist %}
                     <li><a href="{{ social[1] }}">{{ social[0] }}</a></li>
                 {% endfor %}
