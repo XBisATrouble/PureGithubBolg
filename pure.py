@@ -121,7 +121,7 @@ jinja_env.globals["title"] = "Blog"
 jinja_env.globals["icon"] = "logo.bmp"
 
 # 直接添加名字和地址
-jinja_env.globals["sociallist"] = (("github", "https://github.com/XBisATrouble"),)
+jinja_env.globals["sociallist"] = (("Github", "https://github.com/XBisATrouble"),)
 
 if __name__ == "__main__":
     develop()
