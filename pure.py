@@ -96,12 +96,16 @@ def copy_all_static():
 def push_to_github():
     os.system("""cd %s && git add * && git commit -m "update" && git push origin master""" % website_dir)
 
+def push_local_to_github():
+    os.system("""git add * && git commit -m "update" && git push origin master""")
+
 
 def develop():
     """部署到github"""
     copy_all_static()
     cover_all_post()
     push_to_github()
+    push_local_to_github()
 
 
 root_dir = dirname(__file__)
