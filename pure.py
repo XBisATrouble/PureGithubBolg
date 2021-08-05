@@ -59,6 +59,7 @@ def all_post_file():
             post_path = join(root, f_name)
             # print(post_path)
             c_time = os.stat(post_path).st_ctime
+            print(c_time)
             postlist.append((post_path, c_time))
     return sorted(postlist, key=lambda x:x[1], reverse=True)
 
