@@ -97,7 +97,7 @@ def push_to_github():
     os.system("""cd %s && git add * && git commit -m "update" && git push origin master""" % website_dir)
 
 def push_local_to_github():
-    os.system("""git add * && git commit -m "update" && git push origin master""")
+    os.system("""git add * && git commit -m "update" && git push origin xbisatrouble""")
 
 
 def develop():
