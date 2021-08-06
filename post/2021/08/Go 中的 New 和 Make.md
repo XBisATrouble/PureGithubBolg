@@ -1,4 +1,4 @@
-## Go 语言的 New 和 Make
+## Go 中的 New 和 Make
 思考来源于一道题：下列代码可以运行吗？
 ```
 package main
