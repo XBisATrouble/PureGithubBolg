@@ -12,7 +12,7 @@ from jinja2 import PackageLoader, Environment
 
 
 class Post(object):
-    def __init__(self, from_file):
+    def __init__(self, from_file, dt):
         if not os.path.isfile(from_file): raise RuntimeError("not a file")
         self.fromfile = from_file
         post_dir = join(root_dir, "post")
@@ -75,7 +75,7 @@ def cover_all_post():
         time_local = time.localtime(c_time)
         dt = time.strftime("%Y-%m-%d",time_local)
         print(dt)
-        p = Post(post_path)
+        p = Post(post_path, dt)
         p.write()
         print(p.title, p.url)
         postlist.append(p)
