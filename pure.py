@@ -75,10 +75,9 @@ def cover_all_post():
         # print(post_path)
         time_local = time.localtime(c_time)
         dt = time.strftime("%Y-%m-%d",time_local)
-        print(dt)
         p = Post(post_path, dt)
         p.write()
-        print(p.title, p.url)
+        print(p.title, p.url, p._dt)
         postlist.append(p)
     index_t = jinja_env.get_template("index.html")
     with open(join(website_dir, "index.html"), "w") as fd:
