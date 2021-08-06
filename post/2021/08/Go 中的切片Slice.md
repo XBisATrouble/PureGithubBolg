@@ -24,3 +24,9 @@ type slice struct {
 	cap   int
 }
 ```
+slice是一个特殊的引用类型,但是它自身也是个结构体，属性len表示可用元素数量,读写操作不能超过这个限制,不然就会panic，属性cap表示最大扩张容量,当然这个扩张容量也不是无限的扩张,它是受到了底层数组array的长度限制,超出了底层array的长度就会panic，**slice的数据存在数组当中**。
+
+#### slice的重要知识点：
+* slice的底层是数组指针。
+* 当append后，slice长度不超过容量cap，新增的元素将直接加在数组中。
+* 当append后，slice长度超过容量cap，将会返回一个新的slice。
