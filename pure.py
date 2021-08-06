@@ -21,6 +21,7 @@ class Post(object):
         self.url = pathname2url(self.destfile.split(website_dir)[1])
         self._html = None
         self._title = None
+        self._dt = dt
 
     @property
     def html(self):
