@@ -70,6 +70,32 @@ func make(t Type, size ...IntegerType) Type {}
 ```
 先上函数签名，可以看到 make 返回的是 Type，而不是 *Type，返回的还是这三个引用类型本身，但是 make 调用的 `runtime.makeslice` 等返回的都是类型指针，对应代码块2中的注释。
 
+make严格意义上来说是golang提供给开发者的语法糖，在编译期间，make会被替换为具体的特性函数。
+
+```
+     case OMAKE:
+                args := n.List.Slice()
+
+                n.List.Set(nil)
+                l := args[0]
+                l = typecheck(l, Etype)
+                t := l.Type
+
+                i := 1
+                switch t.Etype {
+                case TSLICE:
+                        ...
+
+                case TMAP:
+                        ...
+
+                case TCHAN:
+                        ...
+                }
+
+                n.Type = t
+```
+
 ### 总结
 
 Go 语言中 make 和 new 关键字，make 关键字的作用是创建 slice、hash 和 Channel 等内置的数据结构，而 new 的作用是为类型申请一片内存空间，并返回指向这片内存的指针。
