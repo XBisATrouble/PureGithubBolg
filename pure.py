@@ -73,6 +73,7 @@ def cover_all_post():
     for (post_path, c_time) in all_post_file():
         # print(post_path)
         print(c_time)
+        time_local = time.localtime(c_time)
         p = Post(post_path)
         p.write()
         print(p.title, p.url)
