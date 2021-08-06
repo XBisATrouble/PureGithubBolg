@@ -1,61 +1,63 @@
 <html>
-    <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"
-            integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+        integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap-theme.min.css">
     <link href="home.css" rel="stylesheet" type="text/css">
     <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
-    <link rel="shortcut icon" href="/images/logo.bmp">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes"/>
+    <link rel="shortcut icon" href="/static/images/logo.bmp">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes" />
     <title>{{ title }}</title>
-  </head>
+</head>
 
-  <body data-new-gr-c-s-check-loaded="14.1024.0" data-gr-ext-installed="">　　
-     <script>
-        if (/mobile/i.test(navigator.userAgent) || /android/i.test(navigator.userAgent))
-        {
+<body data-new-gr-c-s-check-loaded="14.1024.0" data-gr-ext-installed="">　　
+    <script>
+        if (/mobile/i.test(navigator.userAgent) || /android/i.test(navigator.userAgent)) {
             document.body.classList.add('mobile');
         }
-     </script>
+    </script>
 
     <nav class="navbar navbar-default navbar-fixed-top" style="opacity: .9" role="navigation">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">{{ title }}</a>
-        </div>
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">{{ title }}</a>
+            </div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">博客</a></li>
-                <li><a href="http://resume.xbisatrouble.com" target="view_window">简历</a></li>
-                {% for social in sociallist %}
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#">博客</a></li>
+                    <li><a href="http://resume.xbisatrouble.com" target="view_window">简历</a></li>
+                    {% for social in sociallist %}
                     <li><a href="{{ social[1] }}" target="view_window">{{ social[0] }}</a></li>
-                {% endfor %}
-            </ul>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<div class="outer">
-    <ul class="list-group">
-        {% for post in postlist %}
+    <div class="outer">
+        <ul class="list-group">
+            {% for post in postlist %}
             <li class="list-group-item title">
                 <div class="date">{{ post._dt }}</div> <br>
                 <a href="{{ post.url }}">{{ post.title }}</a>
             </li>
-        {% endfor %}
-    </ul>
-</div>
+            {% endfor %}
+        </ul>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
 </html>
