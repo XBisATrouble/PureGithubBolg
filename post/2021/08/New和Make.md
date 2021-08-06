@@ -24,6 +24,10 @@ Go中new和make都是用来内存分配的原语，区别是，new 只分配内�
 
 ![avatar](../../../static/images/2021/golang-make-and-new.png)
 
+
+* new 的作用是根据传入的类型分配一片内存空间并返回指向这片内存空间的指针
+* make 的作用是初始化内置的数据结构，返回的是指向结构体的指针，其本身是个引用
+
 ```
 // new
 i := new(int) // 返回一个指向该类型的指针
@@ -33,9 +37,6 @@ slice := make([]int, 0, 100)    // slice 是一个包含 data、cap 和 len 的�
 hash := make(map[int]bool, 10)  // hash 是一个指向 runtime.hmap 结构体的指针（语法糖成引用）
 ch := make(chan int, 5)         // ch 是一个指向 runtime.hchan 结构体的指针
 ```
-
-* new 的作用是根据传入的类型分配一片内存空间并返回指向这片内存空间的指针
-* make 的作用是初始化内置的数据结构，返回的是指向结构体的指针，其本身是个引用
 
 至于分配在堆还是栈上，不重要，Go中决定变量分配位置的是变量逃逸分析。
 
