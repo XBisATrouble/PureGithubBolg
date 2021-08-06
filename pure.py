@@ -47,7 +47,6 @@ class Post(object):
         if not os.path.exists(dirname(self.destfile)):
             os.makedirs(dirname(self.destfile))
         with open(self.destfile, "w", encoding="utf-8", errors="xmlcharrefreplace") as fd:
-            print(self.title + "111")
             html = jinja_env.get_template("post.html").render(title=self.title, content=self.html)
             # print(html)
             fd.write(html)
