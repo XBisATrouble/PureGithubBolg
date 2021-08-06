@@ -72,8 +72,9 @@ def cover_all_post():
     postlist = []
     for (post_path, c_time) in all_post_file():
         # print(post_path)
-        print(c_time)
         time_local = time.localtime(c_time)
+        dt = time.strftime("%Y-%m-%d",time_local)
+        print(dt)
         p = Post(post_path)
         p.write()
         print(p.title, p.url)
