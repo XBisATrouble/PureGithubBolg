@@ -1,7 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+
+/* reset CSS */
+table {
+    font-size: 100%;
+}
+/* end reset CSS */
+
 body {
     font-family: STFangSong, Helvetica, Arial, Vernada, Tahoma, STXihei, "Microsoft YaHei", "Songti SC", SimSun, Heiti, sans-serif;
     font-size: 21px;
-    width: 100%;
+}
+
+body.mobile {
+    font-size: 36px;
+}
+
+.navbar-brand {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;
+    font-size: 100%;
 }
 
 .title a {
@@ -24,25 +42,16 @@ li.title:hover {
 }
 
 .panel-default > .panel-heading {
-	background-image: none;
-	background-color: #fff;
+    background-image: none;
+    background-color: #fff;
     font-size: 100%;
 }
 
 .navbar-default {
-	background-image: none;
-	background-color: #fff;
+    background-image: none;
+    background-color: #fff;
     box-shadow: none;
     font-size: 100%;
-}
-
-.row {
-    margin-left : 0;
-    margin-right: 0;
-}
-
-.navbar-brand, .navbar-nav {
-    font-size: 24px;
 }
 
 .navbar-brand, .navbar-nav {

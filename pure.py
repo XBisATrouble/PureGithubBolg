@@ -122,7 +122,7 @@ jinja_env = Environment(loader=PackageLoader(__name__))
 website_dir = "../XBisATrouble.github.io"
 
 # 博客名字
-jinja_env.globals["title"] = "Blog"
+jinja_env.globals["title"] = "博客"
 
 # 博客图标
 jinja_env.globals["icon"] = "logo.bmp"
