@@ -43,7 +43,9 @@ ch := make(chan int, 5)         // ch 是一个指向 runtime.hchan 结构体的
 ### 关键字 new
 new(T) 函数是一个分配内存的内建函数，用来分配内存，并初始化零值，返回零值指针。
 在编译过程中，使用 new 大致会产生 2 种情况：
+
 1. 若该对象申请的空间为 0，则返回表示空指针的 zerobase 变量，这类对象比如：slice, map, channel 以及一些结构体等。
+
 2. 其他情况则会使用 `runtime.newobject` 函数，调用了 `runtime.mallocgc` 函数去开辟一段内存空间，然后返回那块空间的地址
 
 ```
