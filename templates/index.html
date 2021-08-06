@@ -47,7 +47,8 @@
                 <ul class="list-group">
                     {% for post in postlist %}
                         <li class="list-group-item title">
-                            <a href="{{ post.url }}">{{ post.title }} {{post._dt}}</a>
+                            <div class="date">{{ post._dt }}</div> <br>
+                            <a href="{{ post.url }}">{{ post.title }}</a>
                         </li>
                     {% endfor %}
                 </ul>
