@@ -71,8 +71,9 @@ def cover_all_post():
     """create posts html format and make up index.html"""
     post_basedir = join(root_dir, "post")
     postlist = []
-    for (post_path, _) in all_post_file():
+    for (post_path, c_time) in all_post_file():
         # print(post_path)
+        print(c_time)
         p = Post(post_path)
         p.write()
         print(p.title, p.url)
