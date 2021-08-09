@@ -101,6 +101,5 @@ make严格意义上来说是golang提供给开发者的语法糖，在编译期�
 Go 语言中 make 和 new 关键字，make 关键字的作用是创建 slice、hash 和 Channel 等内置的数据结构，而 new 的作用是为类型申请一片内存空间，并返回指向这片内存的指针。
 
 ### 参考
-[5.5 make 和 new ](https://draveness.me/golang/docs/part2-foundation/ch05-keyword/golang-make-and-new/)
-
-[一文理清 Go 引用的常见疑惑](https://zhuanlan.zhihu.com/p/84580859)
+1. [5.5 make 和 new ](https://draveness.me/golang/docs/part2-foundation/ch05-keyword/golang-make-and-new/)
+2. [一文理清 Go 引用的常见疑惑](https://zhuanlan.zhihu.com/p/84580859)

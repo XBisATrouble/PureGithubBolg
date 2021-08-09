@@ -91,7 +91,7 @@ func main() {
     fmt.Println(a, len(a), cap(a)) // (5) 输出：[1, 2, 3] 3 3
 }
 ```
-(5)：扩容之后，可以看到底层 arra y已经改变，所以 s 的修改不会改变 a
+(5)：扩容之后，可以看到底层 arra 已经改变，所以 s 的修改不会改变 a
 
 ### 结论
 1. Go 的 slice 类型中包含了一个 array 指针以及 len 和 cap 两个 int 类型的成员。
