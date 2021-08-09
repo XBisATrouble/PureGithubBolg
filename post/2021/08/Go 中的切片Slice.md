@@ -27,6 +27,7 @@ type slice struct {
 }
 ```
 slice 是一个特殊的引用类型,但是它自身也是个结构体，属性 len 表示可用元素数量,读写操作不能超过这个限制,不然就会 panic，属性 cap 表示最大扩张容量,当然这个扩张容量也不是无限的扩张,它是受到了底层数组 array 的长度限制,超出了底层 array 的长度就会 panic，**slice 的数据存在数组当中**。
+
 ![avatar](../../../static/images/2021/2019-02-20-golang-slice-struct.png)
 
 - slice 的重要知识点:
@@ -76,7 +77,7 @@ func main() {
 (3)：初始化容量为 1，长度为 0 的 slice，append 两次后发生了扩容，容量低于 1024 都是双倍扩容
 
 - Tips：
-    - 如果函数中使用make初始slice，最好指定容量声明，避免多次扩容
+    - 如果函数中使用make初始slice，最好**指定容量，避免多次扩容**
 
 ```
 func main() {
