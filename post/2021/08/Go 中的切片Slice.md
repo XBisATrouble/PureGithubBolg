@@ -93,6 +93,23 @@ func main() {
 ```
 (5)：扩容之后，可以看到底层 arra 已经改变，所以 s 的修改不会改变 a
 
+### Slice 作为形参扩容
+直接看代码
+```
+func modify(s []int) {
+	s = append(s, 1, 2)
+}
+
+func main() {
+	s := make([]int, 1, 3)
+	modify(s)
+	fmt.Println(s) // 输出：0
+}
+```
+slice 经过 make 之后，初始化了容量为 3，长度为 1，所以最后的数组是 [0]。
+
+modify 函数中 append 时，没有触发扩容，所以底层的 array 本应该是一样，但是因为 cap 和 len是 int，不会改变，所以 main 函数中的 s 看起来并没有变化。
+
 ### 结论
 1. Go 的 slice 类型中包含了一个 array 指针以及 len 和 cap 两个 int 类型的成员。
 2. Go 中的参数传递实际都是值传递，将 slice 作为参数传递时，函数中会创建一个 slice 参数的副本，这个副本同样也包含 array, len, cap这三个成员。
