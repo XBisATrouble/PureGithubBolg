@@ -60,11 +60,11 @@ func main() {
 
 - Tips：
     - Go 中只有值传递，Channel、Hash 和 Map 的 make 会返回对应的引用类型本身。
-    - Slice有所不同，他返回的是底层 array 的指针，也可以达到引用效果。
+    - Slice 有所不同，他返回的是底层 array 的指针，也可以达到引用效果。
     - **引用类型不是传引用**
 
-#### Slice扩容
-slice如果涉及到append，警惕扩容陷阱
+#### Slice 扩容
+slice 如果涉及到 append，警惕扩容陷阱
 ```
 func main() {
     s := make([]int, 0, 1)
@@ -77,7 +77,7 @@ func main() {
 (3)：初始化容量为 1，长度为 0 的 slice，append 两次后发生了扩容，容量低于 1024 都是双倍扩容
 
 - Tips：
-    - 如果函数中使用make初始slice，最好**指定容量，避免多次扩容**
+    - 如果函数中使用 make 初始 slice，最好**指定容量，避免多次扩容**
 
 ```
 func main() {
@@ -91,13 +91,13 @@ func main() {
     fmt.Println(a, len(a), cap(a)) // (5) 输出：[1, 2, 3] 3 3
 }
 ```
-(5)：扩容之后，可以看到底层array已经改变，所以 s 的修改不会改变 a
+(5)：扩容之后，可以看到底层 arra y已经改变，所以 s 的修改不会改变 a
 
 ### 结论
 1. Go 的 slice 类型中包含了一个 array 指针以及 len 和 cap 两个 int 类型的成员。
 2. Go 中的参数传递实际都是值传递，将 slice 作为参数传递时，函数中会创建一个 slice 参数的副本，这个副本同样也包含 array, len, cap这三个成员。
-3. 副本中的array指针与原slice指向同一个地址，所以当修改副本slice的元素时，原slice的元素值也会被修改。但是如果修改的是副本slice的len和cap时，原slice的len和cap仍保持不变。
-4. 如果在操作副本时由于扩容操作导致重新分配了副本slice的array内存地址，那么之后对副本slice的操作则完全无法影响到原slice，包括slice中的元素。
+3. 副本中的 array 指针与原 slice 指向同一个地址，所以当修改副本 slice 的元素时，原 slice 的元素值也会被修改。但是如果修改的是副本 slice 的 len 和 cap 时，原 slice 的 len 和 cap 仍保持不变。
+4. 如果在操作副本时由于扩容操作导致重新分配了副本 slice 的 array 内存地址，那么之后对副本 slice 的操作则完全无法影响到原 slice，包括 slice 中的元素。
 
 ### 参考资料
 1. [3.2 切片](https://draveness.me/golang/docs/part2-foundation/ch03-datastructure/golang-array-and-slice/)
